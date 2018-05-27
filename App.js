@@ -4,6 +4,7 @@
  * @flow
  */
 
+import MapView from 'react-native-maps';
 import React, { Component } from 'react';
 import {
   Platform,
@@ -21,19 +22,28 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+
+  getInitialState(){
+    return{
+      region:{
+        latitude:37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+      },
+    };
+  }
+
+    onRegionChange(region){
+        this.setState({region});
+    }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
+      <MapView
+          region={this.state.region}
+          onRegionChange={this.onRegionChange}
+      />
     );
   }
 }
