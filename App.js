@@ -10,59 +10,51 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+    Dimensions,
+    ScrollView,
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+const { width, height } = Dimensions.get('window');
 
-type Props = {};
+const ASPECT_RATIO = width / height;
+const LATITUDE = 37.78825;
+const LONGITUDE = -122.4324;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+
+const SAMPLE_REGION = {
+    latitude: LATITUDE,
+    longitude: LONGITUDE,
+    latitudeDelta: LATITUDE_DELTA,
+    longitudeDelta: LONGITUDE_DELTA,
+};
+
 export default class App extends Component<Props> {
 
-  getInitialState(){
-    return{
-      region:{
-        latitude:37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-      },
-    };
-  }
-
-    onRegionChange(region){
-        this.setState({region});
-    }
-
   render() {
-    return (
-      <MapView
-          region={this.state.region}
-          onRegionChange={this.onRegionChange}
-      />
-    );
+      const maps = [];
+      for (let i = 0; i < 10; i++) {
+          maps.push(
+              <MapView
+                  liteMode
+                  key={`map_${i}`}
+                  style={styles.map}
+                  initialRegion={SAMPLE_REGION}
+              />
+          );
+      }
+      return (
+          <ScrollView style={StyleSheet.absoluteFillObject}>
+              {maps}
+          </ScrollView>
+      );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    map: {
+        height: 200,
+        marginVertical: 50,
+    },
 });
