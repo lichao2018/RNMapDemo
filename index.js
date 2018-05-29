@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import BaiduMapDemo from './BaiduMapDemo'
 
-
 export default class BaiDuMapDemo extends Component {
     render() {
         return (
