@@ -46,7 +46,7 @@ export default class App extends Component<Props> {
       }
       return (
           <ScrollView style={StyleSheet.absoluteFillObject}>
-              {maps}
+              {maps} 
           </ScrollView>
       );
   }
