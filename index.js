@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import BaiduMapDemo from './BaiduMapDemo'
 
-export default class BaiDuMapDemo extends Component {
+export default class RNMapDemo extends Component {
     render() {
         return (
             <BaiduMapDemo/>
@@ -16,4 +16,4 @@ export default class BaiDuMapDemo extends Component {
     }
 }
 
-AppRegistry.registerComponent('BaiDuMapDemo', () => BaiDuMapDemo);
+AppRegistry.registerComponent('RNMapDemo', () => RNMapDemo);
