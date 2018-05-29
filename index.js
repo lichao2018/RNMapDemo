@@ -1,4 +1,19 @@
-import { AppRegistry } from 'react-native';
-import App from './App';
+import React, { Component } from 'react';
+import {
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View,
+    TouchableHighlight
+} from 'react-native';
+import BaiduMapDemo from './BaiduMapDemo'
 
-AppRegistry.registerComponent('RNMapDemo', () => App);
+export default class BaiDuMapDemo extends Component {
+    render() {
+        return (
+            <BaiduMapDemo/>
+        );
+    }
+}
+
+AppRegistry.registerComponent('BaiDuMapDemo', () => BaiDuMapDemo);
