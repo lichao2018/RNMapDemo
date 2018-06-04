@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import {
     AppRegistry,
-    StyleSheet,
     Text,
-    View,
-    TouchableHighlight
 } from 'react-native';
-import BaiduMapDemo from './BaiduMapDemo'
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 
-export default class RNMapDemo extends Component {
+class RNMapDemo extends Component {
     render() {
         return (
-            <BaiduMapDemo/>
+            <ScrollableTabView tabBarPosition='bottom'>
+                <Text tabLabel={'tab1'}>Text1</Text>
+                <Text tabLabel={'tab2'}>Text2</Text>
+                <Text tabLabel={'tab3'}>Text3</Text>
+            </ScrollableTabView>
         );
     }
 }
 
+export default RNMapDemo;
 AppRegistry.registerComponent('RNMapDemo', () => RNMapDemo);
