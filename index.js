@@ -19,7 +19,7 @@ class RNMapDemo extends Component {
                 />
                 <BaiduMapDemo tabLabel={'导航'}/>
                 <View
-                    abLabel={'个人中心'}
+                    tabLabel={'个人中心'}
                     style={{flexDirection:'column'}}>
                     <Text>我的信息</Text>
                     <Text>订单</Text>
