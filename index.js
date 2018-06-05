@@ -3,10 +3,12 @@ import {
     AppRegistry,
     Text,
     TextInput,
-    View
+    View,
+    StyleSheet
 } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import BaiduMapDemo from './BaiduMapDemo'
+import Dimensions from 'Dimensions';
 
 class RNMapDemo extends Component {
     render() {
@@ -15,23 +17,37 @@ class RNMapDemo extends Component {
                 <TextInput
                     tabLabel={'停车场'}
                     style={{height:40}}
-                    value='helo'
                 />
                 <BaiduMapDemo tabLabel={'导航'}/>
                 <View
                     tabLabel={'个人中心'}
-                    style={{flexDirection:'column'}}>
-                    <Text>我的信息</Text>
-                    <Text>订单</Text>
-                    <Text>钱包</Text>
-                    <Text>停车场加盟</Text>
-                    <Text>投诉建议</Text>
-                    <Text>设置</Text>
+                    style={{
+                        flexDirection: 'column',
+                        backgroundColor: '#F0EFF5',
+                        marginTop: 10,
+                    }}
+                >
+                    <Text style={styles.personalCenter}>我的信息</Text>
+                    <Text style={styles.personalCenter}>订单</Text>
+                    <Text style={styles.personalCenter}>钱包</Text>
+                    <Text style={styles.personalCenter}>停车场加盟</Text>
+                    <Text style={styles.personalCenter}>投诉建议</Text>
+                    <Text style={styles.personalCenter}>设置</Text>
                 </View>
             </ScrollableTabView>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    personalCenter:{
+        fontSize: 20,
+        width: Dimensions.get('window').width,
+        height: 50,
+        borderWidth: 0.5,
+        padding: 10
+    }
+});
 
 export default RNMapDemo;
 AppRegistry.registerComponent('RNMapDemo', () => RNMapDemo);
