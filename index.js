@@ -16,7 +16,18 @@ class RNMapDemo extends Component {
             <ScrollableTabView tabBarPosition='bottom'>
                 <TextInput
                     tabLabel={'停车场'}
-                    style={{height:40}}
+                    style={{
+                        height:40,
+                        borderColor:'gray',
+                        borderWidth:1,
+                        fontSize:20,
+                        padding:0,
+                        textAlignVertical:'top',
+                        margin:10
+                    }}
+                    underlineColorAndroid={'transparent'}
+                    multiline={true}
+                    placeholder={' 查找停车场'}
                 />
                 <BaiduMapDemo tabLabel={'导航'}/>
                 <View
