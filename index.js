@@ -11,6 +11,18 @@ import Dimensions from 'Dimensions';
 import {MapView} from 'react-native-amap3d';
 
 class RNMapDemo extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            _coordinates : {
+                latitude: 39.91095,
+                longitude: 116.37296
+            }
+        }
+    }
+
+    onPressEvent = ({nativeEvent}) => this.setState({_coordinates: nativeEvent});
+
     render() {
         return (
             <ScrollableTabView tabBarPosition='bottom'>
@@ -43,7 +55,14 @@ class RNMapDemo extends Component {
                     showsScale={true}
                     showsLocationButton={true}
                     showsZoomControls={true}
-                />
+                    onPress={this.onPressEvent}
+                >
+                    <MapView.Marker
+                        color='green'
+                        title='hello marker'
+                        coordinate={this.state._coordinates}
+                    />
+                </MapView>
                 <View
                     tabLabel={'个人中心'}
                     style={{
