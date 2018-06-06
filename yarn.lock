@@ -4188,6 +4188,10 @@ react-is@^16.3.1:
   version "16.4.0"
   resolved "http://registry.npm.taobao.org/react-is/download/react-is-16.4.0.tgz#cc9fdc855ac34d2e7d9d2eb7059bbc240d35ffcf"
 
+react-native-amap3d@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/react-native-amap3d/download/react-native-amap3d-1.0.0.tgz#9aed0a2a23d9d5f9e5154dd889383c028da9ad07"
+
 react-native-baidu-map@^0.6.0:
   version "0.6.0"
   resolved "http://registry.npm.taobao.org/react-native-baidu-map/download/react-native-baidu-map-0.6.0.tgz#cb4937181e8e0cd2125d347a5b87ca13971647dd"

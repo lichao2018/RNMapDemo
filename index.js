@@ -7,8 +7,8 @@ import {
     StyleSheet
 } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-import BaiduMapDemo from './BaiduMapDemo'
 import Dimensions from 'Dimensions';
+import {MapView} from 'react-native-amap3d';
 
 class RNMapDemo extends Component {
     render() {
@@ -29,7 +29,17 @@ class RNMapDemo extends Component {
                     multiline={true}
                     placeholder={' 查找停车场'}
                 />
-                <BaiduMapDemo tabLabel={'导航'}/>
+                <MapView
+                    tabLabel={'导航'}
+                    style={{
+                        flex: 1
+                    }}
+                    coordinate={{
+                        latitude: 39.91095,
+                        longitude: 116.37296
+                    }}
+                    locationEnabled={true}
+                />
                 <View
                     tabLabel={'个人中心'}
                     style={{

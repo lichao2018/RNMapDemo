@@ -87,8 +87,10 @@ export default class BaiduMapDemo extends Component {
 
           <Button style={styles.btn} title="Locate" onPress={() => {
             console.warn('center', this.state.center);
+            console.warn('1111111111');
             Geolocation.getCurrentPosition()
               .then(data => {
+                console.warn('geolocation.getCurrentPosition');
                 console.warn(JSON.stringify(data));
                 this.setState({
                   zoom: 15,
@@ -105,6 +107,7 @@ export default class BaiduMapDemo extends Component {
                 });
               })
               .catch(e =>{
+                console.warn('2222222');
                 console.warn(e, 'error');
               })
           }} />

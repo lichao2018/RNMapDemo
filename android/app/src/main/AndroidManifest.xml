@@ -26,14 +26,8 @@
       android:theme="@style/AppTheme"
     >
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCRWXQEl6z2zYKg-DlRioLPydxdA4janAw"
-        />
-        <!--家用debug api key:iqFhk3Xpwzmhzi8OXmhvT47HvRa3GOTh-->
-        <!--公司用的debug api key TEqtPG30Xm9HFfjA8gePhxGiEB209P1N-->
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="TEqtPG30Xm9HFfjA8gePhxGiEB209P1N"
+            android:name="com.amap.api.v2.apikey"
+            android:value="a1ed6b12e71cb973e5c6686eebce85a1"
         />
       <activity
         android:name=".MainActivity"
