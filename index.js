@@ -39,6 +39,10 @@ class RNMapDemo extends Component {
                         longitude: 116.37296
                     }}
                     locationEnabled={true}
+                    showsCompass={true}
+                    showsScale={true}
+                    showsLocationButton={true}
+                    showsZoomControls={true}
                 />
                 <View
                     tabLabel={'个人中心'}
