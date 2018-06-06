@@ -14,14 +14,20 @@ class RNMapDemo extends Component {
     constructor(props){
         super(props);
         this.state = {
-            _coordinates : {
-                latitude: 39.91095,
-                longitude: 116.37296
-            }
+            _markers : []
         }
     }
 
-    onPressEvent = ({nativeEvent}) => this.setState({_coordinates: nativeEvent});
+    onPressEvent = ({nativeEvent}) => this.setState({
+        _markers: [
+            ...this.state._markers,
+            <MapView.Marker
+                color='green'
+                title='hello marker'
+                coordinate={nativeEvent}
+            />
+        ]
+    });
 
     render() {
         return (
@@ -57,11 +63,7 @@ class RNMapDemo extends Component {
                     showsZoomControls={true}
                     onPress={this.onPressEvent}
                 >
-                    <MapView.Marker
-                        color='green'
-                        title='hello marker'
-                        coordinate={this.state._coordinates}
-                    />
+                    {this.state._markers}
                 </MapView>
                 <View
                     tabLabel={'个人中心'}
