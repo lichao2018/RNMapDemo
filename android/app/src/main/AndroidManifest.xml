@@ -29,7 +29,7 @@
         //高德地图api公司：a1ed6b12e71cb973e5c6686eebce85a1
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="fee023af091a6dd950264cf726cfaebb"
+            android:value="a1ed6b12e71cb973e5c6686eebce85a1"
         />
       <activity
         android:name=".MainActivity"
