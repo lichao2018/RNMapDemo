@@ -4211,6 +4211,10 @@ react-native-scrollable-tab-view@^0.8.0:
     prop-types "^15.6.0"
     react-timer-mixin "^0.13.3"
 
+react-native-smart-amap@^1.0.7:
+  version "1.0.7"
+  resolved "http://registry.npm.taobao.org/react-native-smart-amap/download/react-native-smart-amap-1.0.7.tgz#0eb0770b352e65741dcbf4f34fca2bd5986efa65"
+
 react-native@0.55.4:
   version "0.55.4"
   resolved "http://registry.npm.taobao.org/react-native/download/react-native-0.55.4.tgz#eecffada3750a928e2ddd07cf11d857ae9751c30"
