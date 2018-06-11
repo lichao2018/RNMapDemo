@@ -11,7 +11,7 @@ export default class Search extends Component{
         super(props);
         this.state={
             searchArray : '',
-            searchLocation : [],
+            data : [],
         }
     }
     render(){
@@ -21,7 +21,7 @@ export default class Search extends Component{
             >
                 <TextInput
                     style={{
-                        width:200,
+                        width:300,
                         height:40,
                         borderColor:'gray',
                         borderWidth:1,
@@ -45,16 +45,26 @@ export default class Search extends Component{
                     }
                     title='搜索'
                 />
-                <Text>{this.state.data}</Text>
             </View>
         );
     }
 
     getSearchLocation(){
-        return fetch('http://restapi.amap.com/v3/place/text?key=4814285eeea3dfc092c2d1bde493f6cc&keywords=' + this.state.searchArray)
+        return fetch('http://restapi.amap.com/v3/place/text?key=4814285eeea3dfc092c2d1bde493f6cc&keywords=' + this.state.searchArray + '&types=150900')
             .then((response)=>response.json())
             .then((responseJson)=>{
-                alert(responseJson.pois[0].location);
+                this.setState({
+                    data: []
+                });
+                for(var i = 0; i < responseJson.pois.length; i ++){
+                    this.setState({
+                        data : [
+                            ...this.state.data,
+                            responseJson.pois[i].location
+                        ]
+                    })
+                }
+                this.props.onSearch(this.state.data);
             })
             .catch((error)=>console.error(error));
     }
