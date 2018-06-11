@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {
     TextInput,
     Button,
-    View
+    View,
+    Text
 } from 'react-native';
 
 export default class Search extends Component{
@@ -10,7 +11,7 @@ export default class Search extends Component{
         super(props);
         this.state={
             searchArray : '',
-            searchLocation : []
+            searchLocation : [],
         }
     }
     render(){
@@ -20,7 +21,7 @@ export default class Search extends Component{
             >
                 <TextInput
                     style={{
-                        width:300,
+                        width:200,
                         height:40,
                         borderColor:'gray',
                         borderWidth:1,
@@ -40,19 +41,20 @@ export default class Search extends Component{
                 />
                 <Button
                     onPress={
-                        ()=>alert(this.getSearchLocation())
+                        ()=>this.getSearchLocation()
                     }
                     title='搜索'
                 />
+                <Text>{this.state.data}</Text>
             </View>
         );
     }
 
     getSearchLocation(){
-        return fetch('http://restapi.amap.com/v3/place/text?key=4814285eeea3dfc092c2d1bde493f6cc&keywords={this.state.searchArray}')
-            .then((response)=>response.json)
+        return fetch('http://restapi.amap.com/v3/place/text?key=4814285eeea3dfc092c2d1bde493f6cc&keywords=' + this.state.searchArray)
+            .then((response)=>response.json())
             .then((responseJson)=>{
-                return responseJson.entr_location;
+                alert(responseJson.pois[0].location);
             })
             .catch((error)=>console.error(error));
     }
