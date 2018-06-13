@@ -51,7 +51,7 @@ export default class Search extends Component{
                 <FlatList
                     data = {this.state.parkingName}
                     renderItem={
-                        ({item, index})=><Text style={styles.item} onPress={this.props.onSearch(this.state.fetchData.pois[index].location)}>{item.key}</Text>
+                        ({item, index})=><Text style={styles.item} onPress={()=>this.props.onSearch(this.state.fetchData.pois[index].location)}>{item.key}</Text>
                     }
                 />
             </View>
