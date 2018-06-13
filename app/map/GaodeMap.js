@@ -22,13 +22,15 @@ export default class GaodeMap extends Component{
 
     render(){
         var markers =[];
-        var _coordinate = {
-            latitude : 0,
-            longitude : 0
-        };
         for(var i = 0; i < this.props.locations.length; i ++){
-            _coordinate.latitude = parseFloat(this.props.locations[i].split(',')[0]);
-            _coordinate.longitude = parseFloat(this.props.locations[i].split(',')[1]);
+            var _coordinate = {
+                latitude : 0,
+                longitude : 0
+            };
+            var location = this.props.locations[i];
+            var locationArr = location.split(',');
+            _coordinate.latitude = parseFloat(locationArr[1]);
+            _coordinate.longitude = parseFloat(locationArr[0]);
             markers.push(
                 <MapView.Marker
                     color='green'
