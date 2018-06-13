@@ -10,13 +10,13 @@ export default class RNMapDemo extends Component {
     constructor(props){
         super(props);
         this.state={
-            data: []
+            location: ''
         }
     }
 
     onSearch(item){
         this.setState({
-            data : item
+            location : item
         });
     }
 
@@ -29,7 +29,7 @@ export default class RNMapDemo extends Component {
                 />
                 <GaodeMap
                     tabLabel={'导航'}
-                    locations={this.state.data}
+                    location={this.state.location}
                 />
                 <PersonalCenter
                     tabLabel={'个人中心'}

@@ -50,7 +50,9 @@ export default class Search extends Component{
                 </View>
                 <FlatList
                     data = {this.state.parkingName}
-                    renderItem={({item})=><Text style={styles.item}>{item.key}</Text>}
+                    renderItem={
+                        ({item, index})=><Text style={styles.item} onPress={this.props.onSearch(this.state.fetchData.pois[index].location)}>{item.key}</Text>
+                    }
                 />
             </View>
         );
@@ -68,11 +70,12 @@ export default class Search extends Component{
                     this.setState({
                         parkingName: [
                             ...this.state.parkingName,
-                            {key: responseJson.pois[i].name}
+                            {
+                                key: responseJson.pois[i].name
+                            }
                         ]
                     })
                 }
-                this.props.onSearch(this.state.fetchData);
             })
             .catch((error)=>console.error(error));
     }

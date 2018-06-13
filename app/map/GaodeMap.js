@@ -21,24 +21,13 @@ export default class GaodeMap extends Component{
     });
 
     render(){
-        var markers =[];
-        for(var i = 0; i < this.props.locations.length; i ++){
-            var _coordinate = {
-                latitude : 0,
-                longitude : 0
-            };
-            var location = this.props.locations[i];
-            var locationArr = location.split(',');
-            _coordinate.latitude = parseFloat(locationArr[1]);
-            _coordinate.longitude = parseFloat(locationArr[0]);
-            markers.push(
-                <MapView.Marker
-                    color='green'
-                    title='hello marker'
-                    coordinate={_coordinate}
-                />
-            );
-        }
+        var _coordinate = {
+            latitude : 0,
+            longitude : 0
+        };
+        var locationArr = this.props.location.split(',');
+        _coordinate.latitude = parseFloat(locationArr[1]);
+        _coordinate.longitude = parseFloat(locationArr[0]);
         return(
             <MapView
                 style={{
@@ -55,7 +44,11 @@ export default class GaodeMap extends Component{
                 showsZoomControls={true}
                 onPress={this._onPressEvent}
             >
-                {markers}
+                <MapView.Marker
+                    color='green'
+                    title='hello marker'
+                    coordinate={_coordinate}
+                />
             </MapView>
         );
     }
