@@ -3,7 +3,9 @@ import {
     TextInput,
     Button,
     View,
-    Text
+    Text,
+    FlatList,
+    StyleSheet
 } from 'react-native';
 
 export default class Search extends Component{
@@ -11,39 +13,44 @@ export default class Search extends Component{
         super(props);
         this.state={
             searchArray : '',
-            data : [],
+            fetchData : {},
+            parkingName : []
         }
     }
     render(){
         return(
-            <View
-                flexDirection='row'
-            >
-                <TextInput
-                    style={{
-                        width:300,
-                        height:40,
-                        borderColor:'gray',
-                        borderWidth:1,
-                        fontSize:20,
-                        padding:0,
-                        textAlignVertical:'top',
-                        margin:10
-                    }}
-                    underlineColorAndroid={'transparent'}
-                    multiline={true}
-                    placeholder={'请输入搜索内容'}
-                    onChangeText={
-                        (value)=>this.setState({
-                            searchArray : value
-                        })
-                    }
-                />
-                <Button
-                    onPress={
-                        ()=>this.getSearchLocation()
-                    }
-                    title='搜索'
+            <View flexDirection='column'>
+                <View flexDirection='row'>
+                    <TextInput
+                        style={{
+                            width:300,
+                            height:40,
+                            borderColor:'gray',
+                            borderWidth:1,
+                            fontSize:20,
+                            padding:0,
+                            textAlignVertical:'top',
+                            margin:10
+                        }}
+                        underlineColorAndroid={'transparent'}
+                        multiline={true}
+                        placeholder={'请输入搜索内容'}
+                        onChangeText={
+                            (value)=>this.setState({
+                                searchArray : value
+                            })
+                        }
+                    />
+                    <Button
+                        onPress={
+                            ()=>this.getSearchLocation()
+                        }
+                        title='搜索'
+                    />
+                </View>
+                <FlatList
+                    data = {this.state.parkingName}
+                    renderItem={({item})=><Text style={styles.item}>{item.key}</Text>}
                 />
             </View>
         );
@@ -54,18 +61,28 @@ export default class Search extends Component{
             .then((response)=>response.json())
             .then((responseJson)=>{
                 this.setState({
-                    data: []
+                    fetchData: responseJson,
+                    parkingName: []
                 });
                 for(var i = 0; i < responseJson.pois.length; i ++){
                     this.setState({
-                        data : [
-                            ...this.state.data,
-                            responseJson.pois[i].location
+                        parkingName: [
+                            ...this.state.parkingName,
+                            {key: responseJson.pois[i].name}
                         ]
                     })
                 }
-                this.props.onSearch(this.state.data);
+                this.props.onSearch(this.state.fetchData);
             })
             .catch((error)=>console.error(error));
     }
 }
+
+const styles = StyleSheet.create({
+    item:{
+        padding: 10,
+        fontSize: 18,
+        height: 44,
+        borderWidth: 0.5,
+    }
+})
