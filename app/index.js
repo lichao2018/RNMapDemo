@@ -4,7 +4,6 @@ import ScrollableTabView from 'react-native-scrollable-tab-view';
 import Search from './search/search';
 import GaodeMap from './map/GaodeMap';
 import PersonalCenter from './center/center';
-import FetchExample from "./fetchExample";
 
 export default class RNMapDemo extends Component {
     constructor(props){
@@ -15,6 +14,7 @@ export default class RNMapDemo extends Component {
     }
 
     onSearch(item){
+        this.scrollableTabView.goToPage(1);
         this.setState({
             location : item
         });
@@ -22,7 +22,9 @@ export default class RNMapDemo extends Component {
 
     render() {
         return (
-            <ScrollableTabView tabBarPosition='bottom'>
+            <ScrollableTabView
+                ref={(ref)=>{this.scrollableTabView=ref;}}
+                tabBarPosition='bottom'>
                 <Search
                     tabLabel={'停车场'}
                     onSearch={this.onSearch.bind(this)}
