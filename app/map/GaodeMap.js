@@ -20,6 +20,31 @@ export default class GaodeMap extends Component{
         ]
     });
 
+    _onLocation = ({nativeEvent}) => {
+        fetch('http://restapi.amap.com/v3/place/around?key=4814285eeea3dfc092c2d1bde493f6cc&location=' + nativeEvent.longitude + ',' + nativeEvent.latitude + '&keywords=停车场&offset=100')
+            .then((response)=>response.json())
+            .then((responseJson)=>{
+                var pois = responseJson.pois;
+                for(var i = 0; i < pois.length; i ++){
+                    var location = pois[i].location.split(',');
+                    this.setState({
+                        _markers: [
+                            ...this.state._markers,
+                            <MapView.Marker
+                                color='green'
+                                title='hello marker'
+                                coordinate={{
+                                    latitude: parseFloat(location[1]),
+                                    longitude: parseFloat(location[0])
+                                }}
+                            />
+                        ]
+                    });
+                }
+            })
+            .catch((error)=>console.error(error));
+    }
+
     render(){
         var _coordinate = {
             latitude : 0,
@@ -52,8 +77,10 @@ export default class GaodeMap extends Component{
                 showsLocationButton={true}
                 showsZoomControls={true}
                 onPress={this._onPressEvent}
+                onLocation={this._onLocation}
+                zoomLevel={15}
             >
-                {marker}
+                {this.state._markers}
             </MapView>
         );
     }
