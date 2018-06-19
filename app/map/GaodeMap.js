@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+import React, {
+    Component,
+} from 'react';
 import {MapView} from 'react-native-amap3d';
 
 export default class GaodeMap extends Component{
@@ -46,6 +48,19 @@ export default class GaodeMap extends Component{
     }
 
     render(){
+        var centerPosition;
+        navigator.geolocation.getCurrentPosition(
+            (position)=>{
+                centerPosition = JSON.stringify(position);
+            },
+            (error)=>{
+                console.warn(error.message);
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 20000,
+                maximumAge: 1000
+            });
         var _coordinate = {
             latitude : 0,
             longitude : 0
@@ -67,10 +82,7 @@ export default class GaodeMap extends Component{
                 style={{
                     flex: 1
                 }}
-                coordinate={{
-                    latitude: 39.91095,
-                    longitude: 116.37296
-                }}
+                coordinate={centerPosition}
                 locationEnabled={true}
                 showsCompass={true}
                 showsScale={true}
