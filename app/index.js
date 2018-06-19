@@ -24,7 +24,9 @@ export default class RNMapDemo extends Component {
         return (
             <ScrollableTabView
                 ref={(ref)=>{this.scrollableTabView=ref;}}
-                tabBarPosition='bottom'>
+                tabBarPosition='bottom'
+                locked={true}
+            >
                 <Search
                     tabLabel={'停车场'}
                     onSearch={this.onSearch.bind(this)}
