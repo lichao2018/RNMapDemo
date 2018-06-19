@@ -14,7 +14,7 @@ export default class RNMapDemo extends Component {
     }
 
     onSearch(item){
-        this.scrollableTabView.goToPage(1);
+        // this.scrollableTabView.goToPage(1);
         this.setState({
             location : item
         });
